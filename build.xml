@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<project name="Wondertote" default="distribute">
+	
+	<property name="dist.dir" value="${basedir}/dist"/>
+	<property name="src.dir" value="${basedir}/src"/>
+	
+	<target name="clean">
+		<delete dir="${dist.dir}" />
+	</target>
+
+	<target name="init" depends="clean">
+		<mkdir dir="${dist.dir}" />
+	</target>
+
+	<target name="packGrantAccess">
+		<zip basedir="${src.dir}" includes="grantaccess.sh,shflags" destfile="${dist.dir}/grantaccess.zip"/>
+	</target>
+
+	<target name="packInitUser">
+		<zip basedir="${src.dir}" includes="inituser.sh,shflags" destfile="${dist.dir}/inituser.zip"/>
+	</target>
+
+	<target name="packInstallVirtualenv">
+		<zip basedir="${src.dir}" includes="bash_profile,bashrc,installvirtualenv.sh" destfile="${dist.dir}/installvirtualenv.zip"/>
+	</target>
+	
+	<target name="distribute" depends="init,packGrantAccess,packInitUser,packInstallVirtualenv"/>
+
+</project>

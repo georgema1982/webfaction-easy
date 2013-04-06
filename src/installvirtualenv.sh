@@ -26,4 +26,9 @@ mv bin/bash_profile .bash_profile
 source .bashrc
 echo "Environment variables have been set up."
 cd $WORKON_HOME
-echo ""
+echo "cdvirtualenv lib/python$PYTHONVER" >> postmkvirtualenv
+echo "touch sitecustomize.py" >> postmkvirtualenv
+echo "toggleglobalsitepackages" >> postmkvirtualenv
+echo "cd -" >> postmkvirtualenv
+echo "Virtualenvwrapper hooks have been updated."
+echo "Virtualenv and virtualenvwrapper have been successfully installed."
