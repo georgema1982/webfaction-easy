@@ -1,6 +1,7 @@
 #!/bin/sh -e
 PYTHONVER=2.7
 PYTHON=python$PYTHONVER
+VIRTUALENVWRAPPERVER=4.5.1
 cd $HOME
 [ ! -d tmp ] && mkdir tmp
 [ ! -d lib ] && mkdir lib
@@ -10,7 +11,6 @@ echo "Necessary folders have been created."
 easy_install-$PYTHONVER pip
 pip install virtualenv
 cd $HOME/tmp
-VIRTUALENVWRAPPERVER=3.7
 VIRTUALENVWRAPPER=virtualenvwrapper-$VIRTUALENVWRAPPERVER
 VIRTUALENVWRAPPERARCHIVE=$VIRTUALENVWRAPPER.tar.gz
 wget "http://pypi.python.org/packages/source/v/virtualenvwrapper/$VIRTUALENVWRAPPERARCHIVE"
@@ -23,12 +23,11 @@ cp .bashrc .bashrc.bak
 cp .bash_profile .bash_profile.bak
 mv bin/bashrc .bashrc
 mv bin/bash_profile .bash_profile
-source .bashrc
+source $HOME/.bashrc
 echo "Environment variables have been set up."
 cd $WORKON_HOME
 echo "cdvirtualenv lib/python$PYTHONVER" >> postmkvirtualenv
 echo "touch sitecustomize.py" >> postmkvirtualenv
-echo "toggleglobalsitepackages" >> postmkvirtualenv
 echo "cd -" >> postmkvirtualenv
 echo "Virtualenvwrapper hooks have been updated."
 echo "Virtualenv and virtualenvwrapper have been successfully installed."
